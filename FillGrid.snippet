@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>FillGrid</Title>
+			<Shortcut>fg</Shortcut>
+			<Description>Code snippet for kendo FillGrid</Description>
+			<Author>Tabib Corporation</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal Editable="false">
+					<ID>classname</ID>
+					<ToolTip>Class name</ToolTip>
+					<Function>ClassName()</Function>
+					<Default>ClassNamePlaceholder</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[public ActionResult FillGrid([DataSourceRequest] DataSourceRequest request)
+        {
+            using (var service = BusinessCreator.Create<$classname$Service>())
+            {
+                var result = service.Get$classname$s($classname$Id)
+                    .ToDataSourceResult(request, x => new
+                    {
+                        x.$classname$Id,
+						x.Title
+                    });
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+        }]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
